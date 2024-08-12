@@ -164,7 +164,9 @@ char** generer_grille(char* phrase, char pix){
     for(int i=0; i<n; i++){
         char forme = phrase[i];
         if(forme != ' ' && forme != '\t'){
-            recopier(mat, grille_pixels(forme, pix), 8, 8, 0, i*8);
+            char** tampon = grille_pixels(forme, pix);
+            recopier(mat, tampon, 8, 8, 0, i*8);
+            free_mat(tampon, 8);
         }
     }
     return mat;
